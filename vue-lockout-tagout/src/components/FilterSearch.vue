@@ -4,7 +4,7 @@
     <input type="date" v-model="selectedDate" @change="filterLockoutsAndTagouts">
     <div class="filtered-lists">
         <div class="filtered-lockouts">
-            <h2>Filtered Lockouts</h2>
+            <h2>Times Unlocked</h2>
             <ul>
                 <li v-for="(lockout, index) in filteredLockouts" :key="index">
                     <div class="lockout-item">
@@ -19,7 +19,7 @@
             </ul>
         </div>
         <div class="filtered-tagouts">
-            <h2>Filtered Tagouts</h2>
+            <h2>Times Locked</h2>
                 <ul>
                     <li v-for="(tagout, index) in filteredTagouts" :key="index">
                         <div class="tagout-item">
@@ -68,6 +68,9 @@ export default {
     font-family: 'Montserrat';
 }
 h2 {
+    color: #b60000;
+}
+h1 {
     color: #b60000;
 }
 .date-filter-container {

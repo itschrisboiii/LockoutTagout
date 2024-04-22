@@ -19,16 +19,22 @@
     </div>
       <button type="submit" class="submit-btn">Submit</button>
     </form>
+    <notification-vue :show="showNotification" :message="notificationMessage" />
   </template>
   
   <script>
+  import NotificationVue from './Notification.vue';
   export default {
+    components: {
+      NotificationVue
+    },
     data() {
         return {
             equipment: null, 
             associate: null, 
             time: '',
-
+            showNotification: false,
+            notificationMessage: ''
         } 
     },
     methods: {
@@ -44,6 +50,13 @@
         console.log(newSubmit);
         this.$store.commit("ADD_TAGOUT", newSubmit);
         console.log(this.$store.state.tagouts);
+
+        this.showNotification = true;
+        this.notificationMessage = 'Time Locked has been logged';
+
+        setTimeout(() => {
+            this.showNotification = false;
+        }, 3000);
       }
     },
     computed: {
@@ -84,7 +97,7 @@ select,
 input[type="time"] {
   width: 100%;
   padding: 8px;
-  border: 1px solid #b60000;
+  border: 1px solid #cccccc;
   border-radius: 5px;
   box-sizing: border-box; /* Ensure padding is included in width calculation */
 }
